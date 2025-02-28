@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
     FormBuilder,
     FormControl,
@@ -37,15 +37,16 @@ export class AuthenticateFormComponent {
                 password: this.loginForm.value.password,
             };
             await this.authService.login(user.email, user.password);
-            alert('Login successful');
+            this.router.navigate(['/']);
         } catch (error) {
+            alert('Login failed');
             console.log('Login failed: ' + error);
         }
     }
 
     onSubmit() {
         if (this.loginForm.valid) {
-            this.login()
+            this.login();
         } else {
             this.loginForm.markAllAsTouched();
         }

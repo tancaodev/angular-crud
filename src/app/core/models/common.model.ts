@@ -4,3 +4,9 @@ export interface IExpense {
     description: string;
     price: string;
 }
+
+export interface User {
+    email: string;
+    password: string;
+    role: 'admin' | 'user';
+}
